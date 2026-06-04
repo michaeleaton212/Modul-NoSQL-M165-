@@ -1,0 +1,56 @@
+<mxGraphModel dx="1420" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="ent_member" value="Mitglied" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="80" y="120" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ent_course" value="Kurs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="420" y="120" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ent_trainer" value="Trainer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="760" y="40" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ent_equipment" value="Geraet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="760" y="260" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="ent_booking" value="Buchung" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="250" y="280" width="160" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="rel_takes" value="NIMMT TEIL AN" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="260" y="120" width="150" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_leads" value="LEITET" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="600" y="60" width="130" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_uses" value="VERWENDET" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="600" y="240" width="130" height="70" as="geometry" />
+    </mxCell>
+
+    <mxCell id="edge_member_takes" value="1..N" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_member" target="rel_takes">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_course_takes" value="1..N" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_course" target="rel_takes">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_takes_booking" value="ueber" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1" source="rel_takes" target="ent_booking">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="edge_trainer_leads" value="1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_trainer" target="rel_leads">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_course_leads" value="N" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_course" target="rel_leads">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="edge_course_uses" value="N" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_course" target="rel_uses">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="edge_equipment_uses" value="N" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_equipment" target="rel_uses">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
