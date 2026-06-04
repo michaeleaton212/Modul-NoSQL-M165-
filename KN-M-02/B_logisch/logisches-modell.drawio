@@ -1,0 +1,153 @@
+<mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="2" value="members" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="60" width="330" height="360" as="geometry" />
+    </mxCell>
+    <mxCell id="3" value="_id: ObjectId" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="40" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="4" value="firstName: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="66" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="5" value="lastName: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="92" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="6" value="email: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="118" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="7" value="birthDate: date" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="144" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="8" value="membershipType: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="2">
+      <mxGeometry x="10" y="170" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="9" value="address (embedded object)" style="swimlane;startSize=25;dashed=1;dashPattern=8 8;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="2">
+      <mxGeometry x="10" y="206" width="300" height="132" as="geometry" />
+    </mxCell>
+    <mxCell id="10" value="street: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="9">
+      <mxGeometry x="10" y="32" width="275" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="11" value="city: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="9">
+      <mxGeometry x="10" y="58" width="275" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="12" value="zip: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="9">
+      <mxGeometry x="10" y="84" width="275" height="24" as="geometry" />
+    </mxCell>
+
+    <mxCell id="13" value="trainers" style="swimlane;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="450" y="60" width="330" height="260" as="geometry" />
+    </mxCell>
+    <mxCell id="14" value="_id: ObjectId" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="40" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="15" value="firstName: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="66" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="16" value="lastName: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="92" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="17" value="specialization: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="118" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="18" value="yearsExperience: int" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="144" width="300" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="19" value="certifications: [string]" style="text;align=left;spacingLeft=4;" vertex="1" parent="13">
+      <mxGeometry x="10" y="170" width="300" height="24" as="geometry" />
+    </mxCell>
+
+    <mxCell id="20" value="courses" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="840" y="60" width="380" height="360" as="geometry" />
+    </mxCell>
+    <mxCell id="21" value="_id: ObjectId" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="40" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="22" value="name: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="66" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="23" value="description: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="92" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="24" value="maxCapacity: int" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="118" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="25" value="durationMinutes: int" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="144" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="26" value="pricePerSession: float" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="170" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="27" value="trainerId: ObjectId (ref trainers)" style="text;align=left;spacingLeft=4;" vertex="1" parent="20">
+      <mxGeometry x="10" y="196" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="28" value="schedule (array of embedded objects)" style="swimlane;startSize=25;dashed=1;dashPattern=8 8;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="20">
+      <mxGeometry x="10" y="232" width="350" height="118" as="geometry" />
+    </mxCell>
+    <mxCell id="29" value="dayOfWeek: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="28">
+      <mxGeometry x="10" y="32" width="325" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="30" value="startTime: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="28">
+      <mxGeometry x="10" y="58" width="325" height="24" as="geometry" />
+    </mxCell>
+
+    <mxCell id="31" value="bookings" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="350" y="500" width="360" height="260" as="geometry" />
+    </mxCell>
+    <mxCell id="32" value="_id: ObjectId" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="40" width="330" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="33" value="memberId: ObjectId (ref members)" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="66" width="330" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="34" value="courseId: ObjectId (ref courses)" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="92" width="330" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="35" value="bookingDate: date" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="118" width="330" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="36" value="status: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="144" width="330" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="37" value="paymentAmount: float" style="text;align=left;spacingLeft=4;" vertex="1" parent="31">
+      <mxGeometry x="10" y="170" width="330" height="24" as="geometry" />
+    </mxCell>
+
+    <mxCell id="38" value="equipment" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="790" y="500" width="380" height="260" as="geometry" />
+    </mxCell>
+    <mxCell id="39" value="_id: ObjectId" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="40" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="40" value="name: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="66" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="41" value="category: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="92" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="42" value="purchaseDate: date" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="118" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="43" value="condition: string" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="144" width="350" height="24" as="geometry" />
+    </mxCell>
+    <mxCell id="44" value="courseIds: [ObjectId] (refs courses)" style="text;align=left;spacingLeft=4;" vertex="1" parent="38">
+      <mxGeometry x="10" y="170" width="350" height="24" as="geometry" />
+    </mxCell>
+
+    <mxCell id="45" value="ref trainerId" style="endArrow=classic;html=1;rounded=0;strokeColor=#b85450;fontColor=#b85450;" edge="1" parent="1" source="27" target="13">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="46" value="ref memberId" style="endArrow=classic;html=1;rounded=0;strokeColor=#82b366;fontColor=#82b366;" edge="1" parent="1" source="33" target="2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="47" value="ref courseId" style="endArrow=classic;html=1;rounded=0;strokeColor=#6c8ebf;fontColor=#6c8ebf;" edge="1" parent="1" source="34" target="20">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="48" value="refs courseIds[]" style="endArrow=classic;html=1;rounded=0;strokeColor=#9673a6;fontColor=#9673a6;" edge="1" parent="1" source="44" target="20">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
