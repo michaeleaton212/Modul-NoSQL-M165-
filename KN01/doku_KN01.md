@@ -1,5 +1,7 @@
 # KN01 - Gesamtdokumentation
 
+Hinweis: Alle geforderten Screenshots, Belege und Erklaerungen sind in dieser Dokumentation enthalten.
+
 ## Aufgabe A: Installation
 
 ### Schritt 1: Cloud-Init Datei
