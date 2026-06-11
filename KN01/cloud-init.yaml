@@ -1,29 +1,40 @@
 #cloud-config
+
+# Benutzer-Konfiguration
 users:
     - name: ubuntu
-      sudo: ALL=(ALL) NOPASSWD:ALL
+      sudo: ALL=(ALL) NOPASSWD:ALL  # Sudo ohne Passwort erlaubt
       groups: users, admin
       home: /home/ubuntu
       shell: /bin/bash
-      ssh_authorized_keys:
+      ssh_authorized_keys:  # Erlaubte SSH Public Keys
           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCPIIO8uY8oWIihDv0tCAbX6toyG1RYkaLZyfGD1L+I07K4CnwAVBSU+81vw3Yv5sN9tj2Ccve9kzEeCNMld2mDP/Tt7edkx2MCToVfVx+njqwY/XbMY9bfdRKJLhIoLavuVNLnnkSIXdtlGr3JF71hPHzBDMEo64ofPCQ8hPsGxL1u3efb12jcWcRhudKtv7Qh6cVE47Zj4xImfi6VlLqwzcKZ5oCqR/z1hLLL+/pS3eM5Qsor5wmAqNfH4+z5eE+pOkFm7a0Nkygv9jwXIqtJzFGKYDe6ciBD04pEovdvY0FTyiv2vksQOVgjtu2faG2Iv1HOG0JktCIwJ49OEgjT teacher-key
           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRI4IqTl6RNGbOJlpVLT6qSuRa34FqHtdOQaq1vxgTPPDesHMGrTIM2jaS2S6HgKMgW3C8COFXR23SQAcyF2C9G+H4MzTge/dmpFDJh3ram2N7HC/N1tB76W0nA05aQWvDHAHSqqB20pAstxvtq8DteGERCNj6sl9GRKDxwXdAthuRXwq+dM05cq6T7vDki/yMmJUYRmyGBEzKfci6XYBMQ079I/4x33NGGqsK23wFb3khqziCUTRtCwJe7frX9Z1ak2JG9RMdEf4l/5kGjOez0VptMcpdZM4C7uyklFtGIb9OjAPLHowgq0cCB9bL7h86U5FkdejLkC87Uzhm/Fo7 teacher-key
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCuWX/W66sjjNiDNuPpKgYO1xFqDoMJoeo5hz2LDNrF teacher-key-wir
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJZRzJzwcRdDvWQsfd+edVKd8jfEmaEmK/Me4iiwXqcV mein-aws-key
+
+# SSH Login mit Passwort deaktiviert, Root-Login erlaubt
 ssh_pwauth: false
 disable_root: false
+
+# Pakete aktualisieren und installieren
 package_update: true
 packages:
     - unzip
-    - gnupg
+    - gnupg   # Wird fuer den MongoDB GPG-Key benoetigt
     - curl
-    - ufw
+    - ufw     # Firewall
+
+# Dateien auf dem Server erstellen
 write_files:
     - path: /home/ubuntu/mongodconfupdate.sh
       content: |
+          # Aktiviert Authentifizierung in der MongoDB-Konfiguration
           sudo sed -i 's/#security:/security:\n  authorization: enabled/g' /etc/mongod.conf
+
     - path: /home/ubuntu/mongodbuser.txt
       content: |
+          # Erstellt einen Admin-Benutzer mit vollen Rechten
           use admin;
           db.createUser(
             {
@@ -37,19 +48,29 @@ write_files:
           );
 
 runcmd:
+    # MongoDB 6.0 Repository einrichten
     - curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
     - echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
     - sudo apt-get update -y
     - sudo apt-get install -y mongodb-org
+
+    # MongoDB so konfigurieren, dass sie von ueberall erreichbar ist
     - sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+
+    # Authentifizierungs-Skript ausfuehren
     - sudo chmod +x /home/ubuntu/mongodconfupdate.sh
     - sudo /home/ubuntu/mongodconfupdate.sh
+
+    # Firewall: SSH und MongoDB-Port freigeben
     - sudo ufw allow OpenSSH
     - sudo ufw allow 27017/tcp
     - sudo ufw --force enable
+
+    # MongoDB starten und Admin-Benutzer anlegen
     - sudo systemctl enable mongod
     - sudo systemctl start mongod
-    - sudo sleep 3
+    - sudo sleep 3  # Warten bis MongoDB bereit ist
     - sudo mongosh < /home/ubuntu/mongodbuser.txt
+
+    # MongoDB mit neuer Konfiguration neu starten
     - sudo systemctl restart mongod
- 

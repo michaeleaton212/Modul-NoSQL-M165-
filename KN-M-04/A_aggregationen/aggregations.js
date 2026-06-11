@@ -1,6 +1,12 @@
 // KN-M-04 - Aggregationen Beispiele
 // MongoDB Aggregation Framework mit verschiedenen Stages
 
+// Aggregationen: Statt einfachen find() Abfragen haben wir aggregate() verwendet.
+// Das erlaubt mehrere Schritte hintereinander zu schalten.
+// Wir haben Trainer gefiltert mit zwei $match Stages,
+// Kurse gefiltert und sortiert mit $match, $project, $sort,
+// und Buchungen gezaehlt pro Status mit $group und $sum.
+
 db = db.getSiblingDB('gym_management');
 
 // ==========================================
